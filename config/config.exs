@@ -22,6 +22,13 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :guardian, Guardian,
+  issuer: "Spikey",
+  ttl: { 3, :days },
+  verify_issuer: true,
+  secret_key: "gBa8bKMUc610vPW5jgavWfdkiUOm2AoD8IM3GWy1p7ApDIedKmr6UUFR/2s1CQ2M",
+  serializer: Spikey.GuardianSerializer
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
